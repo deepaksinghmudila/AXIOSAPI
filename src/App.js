@@ -114,7 +114,8 @@ class App extends Component {
     const list =
       (results && results[searchKey] && results[searchKey].hits) || [];
 
-    return (
+    return( 
+    <>
       <div className="page">
         <div className="interactions">
           <Search
@@ -127,7 +128,7 @@ class App extends Component {
         </div>
         {error ? (
           <div className="interactions">
-            <p>Something went wrong.</p>
+            <p>Sorry! Something went wrong.</p>
           </div>
         ) : (
           <Table list={list} onDismiss={this.onDismiss} />
@@ -139,7 +140,8 @@ class App extends Component {
             More
           </Button>
         </div>
-      </div>
+      </div>       
+      </>
     );
   }
 }
@@ -203,3 +205,10 @@ const Button = ({
   </button>
 
 export default App;
+
+/************************************************************************************** */
+export {  
+  Button,
+  Search,
+  Table
+};
