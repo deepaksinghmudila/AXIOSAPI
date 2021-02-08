@@ -38,3 +38,7 @@ exports[`App has a valid snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`Button Button component renders without crashing in unit testing 1`] = `ShallowWrapper {}`;
+
+exports[`Button renders without crashing in unit testing 1`] = `ShallowWrapper {}`;
