@@ -123,14 +123,14 @@ class App extends Component {
       <>
         <div className="page">
           <div className="interactions">
-            {isLoading
-              ?
-              <Loading />
-              :
-              <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
-              More
-              </Button>
-            }
+            
+            <ButtonWithLoading
+              isLoading={isLoading}
+              onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}
+            >
+             More
+           </ButtonWithLoading>
+
             <Search
               value={searchTerm}
               onChange={this.onSearchChange}
@@ -158,17 +158,6 @@ class App extends Component {
     );
   }
 }
-
-
-const Loading = () => {
-  return (
-    <FontAwesome
-      className="fad fa-spinner"      
-      spin
-    />          
-  );
-} 
-
 
 const Search = ({ value, onChange, onSubmit, children }) =>
 {
@@ -227,7 +216,7 @@ Table.propTypes = {
   onDismiss: PropTypes.func.isRequired,
 };
 */
-
+ 
 const Button = ({
   onClick,
   className = '',
@@ -244,6 +233,20 @@ const Button = ({
 Button.defaultProps = {
      className: '',
 };
+
+
+const Loading = () => {
+  return <FontAwesome className="fad fa-spinner" spin />;
+}; 
+
+const withLoading = (Component) => ({ isLoading, ...props }) =>
+    isLoading
+      ? <Loading />
+      :
+      <Component {...props} />
+      
+const ButtonWithLoading = withLoading(Button);
+
 
 /*
 Button.propTypes = {
